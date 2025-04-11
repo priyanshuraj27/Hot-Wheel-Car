@@ -70,8 +70,6 @@ const HotWheelsSlider = () => {
               alt="left"
             />
           </div>
-
-          {/* Center Image with Framer Motion */}
           <div className="w-[80%] md:w-[70%] h-[200px] md:h-[350px] overflow-hidden flex items-center justify-center">
             <AnimatePresence custom={direction} mode="wait">
               <motion.img
