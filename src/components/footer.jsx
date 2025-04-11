@@ -1,6 +1,6 @@
 import React from 'react';
 import logo2 from '../assets/logo2.png';
-import { FaFacebookF, FaLinkedinIn, FaYoutube, FaInstagram } from 'react-icons/fa';
+import { FaLinkedinIn, FaYoutube, FaInstagram, FaGithub } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -9,8 +9,20 @@ const Footer = () => {
         <div className="flex flex-col items-center md:items-start mb-6 md:mb-0 w-full md:w-1/3">
           <img src={logo2} alt="Logo" className="h-24 object-contain mb-4" />
           <div className="flex space-x-4 text-gray-700">
-            <FaFacebookF className="hover:text-black cursor-pointer" />
-            <FaLinkedinIn className="hover:text-black cursor-pointer" />
+            <a
+              href="https://www.linkedin.com/in/priyanshu-raj-iiitn/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaLinkedinIn className="hover:text-black cursor-pointer" />
+            </a>
+            <a
+              href="https://github.com/priyanshuraj27/Hot-Wheel-Car"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGithub className="hover:text-black cursor-pointer" />
+            </a>
             <FaYoutube className="hover:text-black cursor-pointer" />
             <FaInstagram className="hover:text-black cursor-pointer" />
           </div>
