@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import banner1 from '../assets/banner1.png';
 import banner2 from '../assets/banner2.png';
 import banner3 from '../assets/banner3.png';
@@ -7,24 +8,38 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const HotWheelsSlider = () => {
   const banners = [banner2, banner3, banner1];
   const [current, setCurrent] = useState(0);
-  const [fadeDirection, setFadeDirection] = useState('');
+  const [direction, setDirection] = useState(0);
 
-  const prevSlide = () => {
-    setFadeDirection('fade-left');
-    setTimeout(() => {
-      setCurrent((prev) => (prev - 1 + banners.length) % banners.length);
-    }, 300);
-  };
-
-  const nextSlide = () => {
-    setFadeDirection('fade-right');
-    setTimeout(() => {
-      setCurrent((prev) => (prev + 1) % banners.length);
-    }, 300);
+  const paginate = (dir) => {
+    setDirection(dir);
+    setCurrent((prev) => (prev + dir + banners.length) % banners.length);
   };
 
   const getIndex = (offset) => {
     return (current + offset + banners.length) % banners.length;
+  };
+
+  const variants = {
+    enter: (dir) => ({
+      x: dir > 0 ? 300 : -300,
+      opacity: 0,
+      scale: 0.8,
+      rotate: 15,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1.1,
+      rotate: 0,
+      transition: { duration: 0.6, ease: 'easeInOut' },
+    },
+    exit: (dir) => ({
+      x: dir > 0 ? -300 : 300,
+      opacity: 0,
+      scale: 0.8,
+      rotate: -15,
+      transition: { duration: 0.6, ease: 'easeInOut' },
+    }),
   };
 
   return (
@@ -33,13 +48,13 @@ const HotWheelsSlider = () => {
       <div className="relative w-full max-w-[10000px] px-16">
         {/* Arrows */}
         <button
-          onClick={prevSlide}
+          onClick={() => paginate(-1)}
           className="absolute left-2 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow hover:scale-110 transition"
         >
           <ChevronLeft />
         </button>
         <button
-          onClick={nextSlide}
+          onClick={() => paginate(1)}
           className="absolute right-2 top-1/2 transform -translate-y-1/2 z-10 bg-white p-2 rounded-full shadow hover:scale-110 transition"
         >
           <ChevronRight />
@@ -56,20 +71,20 @@ const HotWheelsSlider = () => {
             />
           </div>
 
-          {/* Center Image with Animation */}
-          <div className="w-[70%] h-[350px] transition-all duration-500 transform-gpu">
-            <img
-              src={banners[current]}
-              alt="center"
-              className={`w-full h-full object-cover rounded-2xl shadow-2xl transition-all duration-500 scale-105 hover:scale-110 ${
-                fadeDirection === 'fade-left'
-                  ? 'animate-fade-left-smooth'
-                  : fadeDirection === 'fade-right'
-                  ? 'animate-fade-right-smooth'
-                  : ''
-              }`}
-              onAnimationEnd={() => setFadeDirection('')}
-            />
+          {/* Center Image with Framer Motion */}
+          <div className="w-[70%] h-[350px] overflow-hidden flex items-center justify-center">
+            <AnimatePresence custom={direction} mode="wait">
+              <motion.img
+                key={current}
+                src={banners[current]}
+                custom={direction}
+                variants={variants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                className="w-full h-full object-cover rounded-2xl shadow-2xl"
+              />
+            </AnimatePresence>
           </div>
 
           {/* Right Image */}
@@ -89,8 +104,9 @@ const HotWheelsSlider = () => {
           <div
             key={idx}
             onClick={() => {
-              setFadeDirection(idx > current ? 'fade-right' : 'fade-left');
-              setTimeout(() => setCurrent(idx), 300);
+              const dir = idx > current ? 1 : -1;
+              setDirection(dir);
+              setCurrent(idx);
             }}
             className={`w-2 h-2 rounded-full cursor-pointer ${
               idx === current ? 'bg-[#D8F6F9]' : 'bg-gray-300'
