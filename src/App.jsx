@@ -3,7 +3,8 @@ import Footer from './components/footer';
 import Header from './components/header';
 import ChallengeSection from './components/challenge';
 import BannerSlider from './pages/landingPage';
-import HotWheelsBanner from './pages/landingPage';
+// import HotWheelsBanner from './pages/landingPage';
+import HotWheelsShowcase from './components/hero2';
 // import HeroSection from './pages/landingPage';
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
       <main className="flex-grow">
         {/* Your page's main content here */}
         {/* Other content can go here */}
-        <HotWheelsBanner />
+        {/* <HotWheelsBanner /> */}
+        <HotWheelsShowcase />
         {/* <HeroSection /> */}
       </main>
 
