@@ -45,7 +45,7 @@ const HotWheelsSlider = () => {
   return (
     <div className="bg-[#DF8A4D] w-full flex flex-col items-center justify-center py-20 space-y-6">
       {/* Carousel Container */}
-      <div className="relative w-full max-w-[10000px] px-16">
+      <div className="relative w-full max-w-[10000px] px-4 sm:px-10 md:px-16">
         {/* Arrows */}
         <button
           onClick={() => paginate(-1)}
@@ -61,9 +61,9 @@ const HotWheelsSlider = () => {
         </button>
 
         {/* Slide Layout */}
-        <div className="flex items-center justify-center gap-21 transition-all duration-500">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-21 transition-all duration-500">
           {/* Left Image */}
-          <div className="w-[25%] h-[350px] opacity-40 scale-90 transition-all duration-300 blur-[1px] hover:scale-95">
+          <div className="w-[70%] md:w-[25%] h-[200px] md:h-[350px] opacity-40 scale-90 transition-all duration-300 blur-[1px] hover:scale-95">
             <img
               src={banners[getIndex(-1)]}
               className="w-full h-full object-cover rounded-xl shadow-lg"
@@ -72,7 +72,7 @@ const HotWheelsSlider = () => {
           </div>
 
           {/* Center Image with Framer Motion */}
-          <div className="w-[70%] h-[350px] overflow-hidden flex items-center justify-center">
+          <div className="w-[80%] md:w-[70%] h-[200px] md:h-[350px] overflow-hidden flex items-center justify-center">
             <AnimatePresence custom={direction} mode="wait">
               <motion.img
                 key={current}
@@ -88,7 +88,7 @@ const HotWheelsSlider = () => {
           </div>
 
           {/* Right Image */}
-          <div className="w-[25%] h-[350px] opacity-40 scale-90 transition-all duration-300 blur-[1px] hover:scale-95">
+          <div className="w-[70%] md:w-[25%] h-[200px] md:h-[350px] opacity-40 scale-90 transition-all duration-300 blur-[1px] hover:scale-95">
             <img
               src={banners[getIndex(1)]}
               className="w-full h-full object-cover rounded-xl shadow-lg"
@@ -116,7 +116,7 @@ const HotWheelsSlider = () => {
       </div>
 
       {/* Shop Buttons */}
-      <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-18">
+      <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8 md:space-x-18 px-4 sm:px-0">
         <button className="bg-[#D8F6F9] text-[#f65e5c] font-bold text-lg px-6 py-3 rounded-full shadow-md hover:scale-105 transition">
           SHOP BY THEME
         </button>
