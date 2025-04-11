@@ -1,12 +1,23 @@
-# React + Vite
+# Hot Wheel Car
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project was created for the **UI to Code Event** held at **IIIT Nagpur**. The goal of the event was to design and implement a sleek, interactive UI for a Hot Wheels-themed website.
 
-Currently, two official plugins are available:
+## Website
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can access the live website here: [Hot Wheel Car Website](#)
 
-## Expanding the ESLint configuration
+## Figma Design
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The Figma design for this project can be accessed here: [Figma Design](#)
+
+## Team
+
+This project was developed by the **Tralaleo Tralala** team.
+
+- **Priyanshu Raj** - Developer and Designer
+- (Add more team members here)
+
+## Copyright
+
+© 2025 **Priyanshu Raj**. All rights reserved.
+
