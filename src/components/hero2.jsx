@@ -27,7 +27,7 @@ const testimonials = [
 
 const HotWheelsShowcase = () => {
   return (
-    <div className="bg-[#DF8A4D] min-h-screen p-6">
+    <div className="bg-[#DF8A4D] min-h-screen p-4">
       <h2 className="text-white text-3xl font-bold mb-6">BEST SELLERS</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-8">
@@ -44,7 +44,7 @@ const HotWheelsShowcase = () => {
         ))}
       </div>
 
-      <h3 className="text-black text-2xl font-semibold mb-4">They Love Hot wheels don’t they 😉</h3>
+      <h3 className="text-black text-2xl font-semibold mb-4 py-10">They Love Hot wheels don’t they 😉</h3>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-20">
         {testimonials.map((testimonial, idx) => (

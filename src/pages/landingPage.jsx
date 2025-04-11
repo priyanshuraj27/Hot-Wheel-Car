@@ -7,13 +7,20 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 const HotWheelsSlider = () => {
   const banners = [banner2, banner3, banner1];
   const [current, setCurrent] = useState(0);
+  const [fadeDirection, setFadeDirection] = useState('');
 
   const prevSlide = () => {
-    setCurrent((prev) => (prev - 1 + banners.length) % banners.length);
+    setFadeDirection('fade-left');
+    setTimeout(() => {
+      setCurrent((prev) => (prev - 1 + banners.length) % banners.length);
+    }, 300);
   };
 
   const nextSlide = () => {
-    setCurrent((prev) => (prev + 1) % banners.length);
+    setFadeDirection('fade-right');
+    setTimeout(() => {
+      setCurrent((prev) => (prev + 1) % banners.length);
+    }, 300);
   };
 
   const getIndex = (offset) => {
@@ -21,7 +28,7 @@ const HotWheelsSlider = () => {
   };
 
   return (
-    <div className="bg-[#dd8343] w-full flex flex-col items-center justify-center py-10 space-y-6 start-0 end-0">
+    <div className="bg-[#DF8A4D] w-full flex flex-col items-center justify-center py-20 space-y-6">
       {/* Carousel Container */}
       <div className="relative w-full max-w-[10000px] px-16">
         {/* Arrows */}
@@ -41,7 +48,7 @@ const HotWheelsSlider = () => {
         {/* Slide Layout */}
         <div className="flex items-center justify-center gap-21 transition-all duration-500">
           {/* Left Image */}
-          <div className="w-[25%] h-[350px] opacity-50 scale-90 transition-transform duration-300">
+          <div className="w-[25%] h-[350px] opacity-40 scale-90 transition-all duration-300 blur-[1px] hover:scale-95">
             <img
               src={banners[getIndex(-1)]}
               className="w-full h-full object-cover rounded-xl shadow-lg"
@@ -49,17 +56,24 @@ const HotWheelsSlider = () => {
             />
           </div>
 
-          {/* Center Image */}
-          <div className="w-[70%] h-[350px] scale-100 transition-transform duration-300">
+          {/* Center Image with Animation */}
+          <div className="w-[70%] h-[350px] transition-all duration-500 transform-gpu">
             <img
               src={banners[current]}
-              className="w-full h-full object-cover rounded-2xl shadow-xl border-4 border-white"
               alt="center"
+              className={`w-full h-full object-cover rounded-2xl shadow-2xl transition-all duration-500 scale-105 hover:scale-110 ${
+                fadeDirection === 'fade-left'
+                  ? 'animate-fade-left-smooth'
+                  : fadeDirection === 'fade-right'
+                  ? 'animate-fade-right-smooth'
+                  : ''
+              }`}
+              onAnimationEnd={() => setFadeDirection('')}
             />
           </div>
 
           {/* Right Image */}
-          <div className="w-[25%] h-[350px] opacity-50 scale-90 transition-transform duration-300">
+          <div className="w-[25%] h-[350px] opacity-40 scale-90 transition-all duration-300 blur-[1px] hover:scale-95">
             <img
               src={banners[getIndex(1)]}
               className="w-full h-full object-cover rounded-xl shadow-lg"
@@ -74,7 +88,10 @@ const HotWheelsSlider = () => {
         {banners.map((_, idx) => (
           <div
             key={idx}
-            onClick={() => setCurrent(idx)}
+            onClick={() => {
+              setFadeDirection(idx > current ? 'fade-right' : 'fade-left');
+              setTimeout(() => setCurrent(idx), 300);
+            }}
             className={`w-2 h-2 rounded-full cursor-pointer ${
               idx === current ? 'bg-[#D8F6F9]' : 'bg-gray-300'
             }`}
@@ -83,11 +100,11 @@ const HotWheelsSlider = () => {
       </div>
 
       {/* Shop Buttons */}
-      <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-10">
-        <button className="bg-[#D8F6F9] text-[#f65e5c] font-bold text-lg px-6 py-3 rounded-full shadow-md">
+      <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-18">
+        <button className="bg-[#D8F6F9] text-[#f65e5c] font-bold text-lg px-6 py-3 rounded-full shadow-md hover:scale-105 transition">
           SHOP BY THEME
         </button>
-        <button className="bg-[#dff6f5] text-[#f65e5c] font-bold text-lg px-6 py-3 rounded-full shadow-md">
+        <button className="bg-[#dff6f5] text-[#f65e5c] font-bold text-lg px-6 py-3 rounded-full shadow-md hover:scale-105 transition">
           SHOP BY CATEGORIES
         </button>
       </div>

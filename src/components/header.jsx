@@ -5,7 +5,7 @@ import helmet from "../assets/helmet.png";
 
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 z-50 w-full bg-yellow-400 px-6 py-3">
+    <header className="top-0 left-0 z-50 w-full bg-yellow-400 px-6 py-3">
       <div className="flex flex-col md:flex-row items-center justify-between w-full space-y-4 md:space-y-0">
         <div className="flex justify-center md:justify-start w-full md:w-auto">
           <img src={logo} alt="Logo" className="h-10" />
