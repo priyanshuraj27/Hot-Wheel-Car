@@ -16,7 +16,7 @@ This project was developed by the **Tralaleo Tralala** team.
 
 - **Priyanshu Raj** - Developer
 - **Tanmay Tiwari** - Designer
-- **Jaivardhan Bhola** = Designer
+- **Jaivardhan Bhola** - Designer
 
 ## Copyright
 
